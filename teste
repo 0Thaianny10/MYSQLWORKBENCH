@@ -1,0 +1,46 @@
+CREATE DATABASE Atividade13;
+USE Atividade13;
+
+CREATE TABLE Cliente (
+id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR (100),
+email VARCHAR (50),
+data_nasc DATE
+);
+
+CREATE TABLE Pedido (
+id_pedido INT PRIMARY KEY,
+id_cliente INT,
+data_pedido DATE,
+valor_total DECIMAL (10,2)
+);
+
+CREATE TABLE Item_pedido (
+id_item INT AUTO_INCREMENT PRIMARY KEY,
+id_pedido INT,
+produto VARCHAR (50),
+quantidade INT (100),
+preco_unitario DECIMAL (10,2)
+);
+
+INSERT INTO Cliente (nome, email, data_nasc) VALUES
+('Marie Curie','MarieCurie@gmail.com','1867-12-12'),
+('Ada Lovelace','AdaLovelace@gmail.com','1815-08-08'),
+('Louis Pasteur','LouisPasteur@gmail.com','1822-03-05'),
+('Martin Luther King','MartinLuther@gmail.com','1929-07-12'),
+('Rosalind Franklin','RosalindFranklin@gmail.com','1962-04-07'),
+('Albert Einstein','AlbertEinstein@gmail.com','1879-08-04');
+
+INSERT INTO Pedido (id_pedido, id_cliente, data_pedido, valor_total) VALUES
+(1,1,'2024-01-08','500.00'),
+(2,1,'2024-02-08','100.00'),
+(3,2,'2024-03-08','150.00'),
+(4,2,'2024-04-08','170.00'),
+(5,3,'2024-05-08','500.00'),
+(6,3,'2024-06-08','150.00'),
+(7,4,'2024-07-08','250.00'),
+(8,4,'2024-08-08','300.00'),
+(9,5,'2024-09-08','190.00'),
+(10,5,'2024-10-08','150.00');
+
+SELECT COUNT(P.id_pedido)  AS TOTAL,AVG (P.valor_total) AS preco_medio  FROM Pedido P;
